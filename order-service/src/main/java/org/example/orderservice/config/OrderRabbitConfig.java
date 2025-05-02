@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OrderRabbitConfig {
     public static final String EXCHANGE = "orderExchange";
-    public static final String ROUTING_KEY = "order.created";
+
+    public static final String CREATED_ROUTING_KEY = "order.created";
+    public static final String CANCELLED_ROUTING_KEY = "order.cancelled";
 
     @Bean
     public DirectExchange orderExchange() {

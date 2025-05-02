@@ -26,4 +26,11 @@ public class OrderController {
         publisher.publishOrder("orderJson");
         return "Order created";
     }
+
+    @GetMapping("/cancel")
+    public String cancelOrder() {
+        System.err.println("Send notification");
+        publisher.cancelOrder("Cancelled Order");
+        return "Order cancelled";
+    }
 }

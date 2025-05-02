@@ -13,7 +13,11 @@ public class OrderEventPublisher {
     }
 
     public void publishOrder(String message) {
-        rabbitTemplate.convertAndSend(OrderRabbitConfig.EXCHANGE, OrderRabbitConfig.ROUTING_KEY, message);
+        rabbitTemplate.convertAndSend(OrderRabbitConfig.EXCHANGE, OrderRabbitConfig.CREATED_ROUTING_KEY, message);
         System.out.println("Order event published::"+message);
+    }
+
+    public void cancelOrder(String orderJson) {
+        rabbitTemplate.convertAndSend(OrderRabbitConfig.EXCHANGE,OrderRabbitConfig.CANCELLED_ROUTING_KEY, orderJson);
     }
 }
