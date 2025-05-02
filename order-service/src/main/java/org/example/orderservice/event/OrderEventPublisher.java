@@ -2,6 +2,7 @@ package org.example.orderservice.event;
 
 import org.example.orderservice.config.OrderRabbitConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,5 +20,10 @@ public class OrderEventPublisher {
 
     public void cancelOrder(String orderJson) {
         rabbitTemplate.convertAndSend(OrderRabbitConfig.EXCHANGE,OrderRabbitConfig.CANCELLED_ROUTING_KEY, orderJson);
+    }
+
+    public void decreaseStockCount(String telefon) {
+        System.out.println("Order decreasing...");
+        rabbitTemplate.convertAndSend(OrderRabbitConfig.EXCHANGE, OrderRabbitConfig.DECREASED_ROUTING_KEY, telefon);
     }
 }

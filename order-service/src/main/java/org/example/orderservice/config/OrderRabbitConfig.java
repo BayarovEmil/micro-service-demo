@@ -10,6 +10,8 @@ public class OrderRabbitConfig {
 
     public static final String CREATED_ROUTING_KEY = "order.created";
     public static final String CANCELLED_ROUTING_KEY = "order.cancelled";
+    public static final String DECREASED_ROUTING_KEY = "order.update";
+
 
     @Bean
     public DirectExchange orderExchange() {

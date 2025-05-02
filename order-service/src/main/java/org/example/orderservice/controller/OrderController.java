@@ -24,6 +24,7 @@ public class OrderController {
     public String createOrder() {
         System.err.println("Send notification");
         publisher.publishOrder("orderJson");
+        publisher.decreaseStockCount("Telefon");
         return "Order created";
     }
 
@@ -33,4 +34,6 @@ public class OrderController {
         publisher.cancelOrder("Cancelled Order");
         return "Order cancelled";
     }
+
+
 }
