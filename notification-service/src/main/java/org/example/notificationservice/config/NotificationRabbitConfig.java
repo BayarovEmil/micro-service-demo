@@ -16,6 +16,11 @@ public class NotificationRabbitConfig {
     public static final String CANCELLED_QUEUE = "order.cancelled.queue";
     public static final String CANCELLED_ROUTING_KEY = "order.cancelled";
 
+    public static final String USER_EXCHANGE = "notificationExchange";
+
+    public static final String NOTIFICATION_ROUTING = "notification.send";
+    public static final String NOTIFICATION_QUEUE = "notification.send.queue";
+
     @Bean
     public Queue createdQueue() {
         return new Queue(CREATED_QUEUE, false);
@@ -29,6 +34,11 @@ public class NotificationRabbitConfig {
     @Bean
     public DirectExchange exchange() {
         return new DirectExchange(EXCHANGE);
+    }
+
+    @Bean
+    public DirectExchange userExchange() {
+        return new DirectExchange(USER_EXCHANGE);
     }
 
     @Bean
